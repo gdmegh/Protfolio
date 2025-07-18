@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/badge';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Users, Zap } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Link from 'next/link';
 
 const allProjects = [
     {
@@ -16,8 +18,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Design', 'Mobile App', 'Case Study'],
       hint: 'tech product',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'modern office',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'mobile app screen' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'app analytics dashboard' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'user profile ui' },
+      ],
       metrics: [
         { title: 'Productivity Boost', value: '+20%', icon: Zap },
         { title: 'User Adoption', value: '10k+ Teams', icon: Users },
@@ -32,8 +37,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Research', 'Web App', 'SaaS'],
       hint: 'dashboard ui',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'user analytics',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'saas dashboard' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'onboarding flow' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'user analytics chart' },
+      ],
       metrics: [
         { title: 'Retention Increase', value: '+35%', icon: Zap },
         { title: 'Active Users', value: '50k+', icon: Users },
@@ -48,8 +56,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['Design System', 'Accessibility', 'E-commerce'],
       hint: 'design system',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'web components',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'design system components' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'color palette styleguide' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'typography examples' },
+      ],
       metrics: [
         { title: 'Development Speed', value: '+40%', icon: Zap },
         { title: 'Audience Reach', value: 'WCAG 2.1 AA', icon: Users },
@@ -64,8 +75,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['Prototyping', 'UI Design', 'Social Media'],
       hint: 'mobile ui',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'social media feed',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'social media app' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'user feed' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'collaboration feature' },
+      ],
       metrics: [
         { title: 'Engagement Lift', value: '+25%', icon: Zap },
         { title: 'User Feedback', value: 'Positive', icon: Users },
@@ -80,8 +94,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['Gamification', 'UI Design', 'Non-profit'],
       hint: 'gamification ui',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'learning app',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'learning app interface' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'gamified badges' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'leaderboard screen' },
+      ],
       metrics: [
         { title: 'Engagement Up', value: '+50%', icon: Zap },
         { title: 'Completion Rate', value: '+70%', icon: Users },
@@ -96,8 +113,11 @@ const allProjects = [
       image: 'https://placehold.co/600x400.png',
       tags: ['Data Viz', 'Fintech', 'Dashboard'],
       hint: 'financial dashboard',
-      heroImage: 'https://placehold.co/1200x600.png',
-      heroHint: 'stock market chart',
+      mockupImages: [
+        { src: 'https://placehold.co/1200x800.png', hint: 'financial data chart' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'investment dashboard' },
+        { src: 'https://placehold.co/1200x800.png', hint: 'stock market graph' },
+      ],
       metrics: [
         { title: 'Data Clarity', value: 'High', icon: Zap },
         { title: 'User Base', value: 'Investors', icon: Users },
@@ -113,6 +133,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
     notFound();
   }
 
+  const relatedProjects = allProjects.filter((p) => p.slug !== params.slug).slice(0, 4);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
       <main className="container mx-auto px-4 py-16 md:px-8">
@@ -126,14 +148,24 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </header>
 
           <div className="mb-12">
-            <Image
-              src={project.heroImage}
-              alt={project.title}
-              width={1200}
-              height={600}
-              className="w-full rounded-lg shadow-lg object-cover"
-              data-ai-hint={project.heroHint}
-            />
+            <Carousel className="w-full max-w-4xl mx-auto">
+                <CarouselContent>
+                    {project.mockupImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                        <Image
+                        src={image.src}
+                        alt={`${project.title} mockup ${index + 1}`}
+                        width={1200}
+                        height={800}
+                        className="w-full rounded-lg shadow-lg object-cover"
+                        data-ai-hint={image.hint}
+                        />
+                    </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -154,6 +186,47 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
              <div dangerouslySetInnerHTML={{ __html: project.longDescription }} />
           </div>
         </article>
+
+        <section className="py-20 mt-12 border-t border-border">
+            <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">More Projects</h3>
+            <Carousel
+                opts={{
+                align: "start",
+                loop: true,
+                }}
+                className="w-full"
+            >
+                <CarouselContent>
+                {relatedProjects.map((relatedProject, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                        <div className="p-1">
+                          <Link href={`/portfolio/${relatedProject.slug}`}>
+                            <Card className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+                                <Image
+                                src={relatedProject.image}
+                                alt={relatedProject.title}
+                                width={600}
+                                height={400}
+                                className="object-cover w-full"
+                                data-ai-hint={relatedProject.hint}
+                                />
+                                <CardContent className="p-6 flex flex-col flex-grow">
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {relatedProject.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                                </div>
+                                <h4 className="text-2xl font-bold font-headline">{relatedProject.title}</h4>
+                                <p className="mt-2 text-muted-foreground flex-grow">{relatedProject.description}</p>
+                                </CardContent>
+                            </Card>
+                          </Link>
+                        </div>
+                    </CarouselItem>
+                ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
+        </section>
       </main>
     </div>
   );
