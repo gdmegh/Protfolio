@@ -34,7 +34,7 @@ const allProjects = [
     {
       title: 'Project Beta',
       slug: 'project-beta',
-      description: 'A complete redesign of a SaaS platform\\'s user onboarding flow, resulting in a 35% increase in user retention.',
+      description: "A complete redesign of a SaaS platform's user onboarding flow, resulting in a 35% increase in user retention.",
       longDescription: "<p>The primary challenge for Project Beta was high user drop-off during the initial onboarding phase. The existing flow was confusing and overwhelming for new users.</p><p>We took a data-driven approach, analyzing user behavior funnels and heatmaps to pinpoint exact drop-off points. Our redesign focused on a guided, step-by-step tour, interactive tutorials, and personalized setup checklists. By breaking down the process into manageable chunks and providing immediate value, we successfully increased user retention by 35% within the first month post-launch.</p>",
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Research', 'Web App', 'SaaS'],
