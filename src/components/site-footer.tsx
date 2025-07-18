@@ -1,6 +1,5 @@
 
-import { Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ProductIdeaForm } from './product-idea-form';
 
 export function SiteFooter() {
   return (
@@ -11,12 +10,9 @@ export function SiteFooter() {
           Have a project in mind or just want to say hello? I'd love to hear from you.
         </p>
         <div className="mt-8">
-          <Button size="lg" asChild>
-            <a href="mailto:hello@aminulislam.com">
-              <Mail className="mr-2" />
-              hello@aminulislam.com
-            </a>
-          </Button>
+            <div className="w-full max-w-2xl mx-auto">
+                <ProductIdeaForm />
+            </div>
         </div>
         <div className="mt-12 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Aminul Islam. All rights reserved.

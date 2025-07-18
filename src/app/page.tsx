@@ -1,12 +1,12 @@
 
 'use client';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MouseFollower } from '@/components/mouse-follower';
+import { ProductIdeaForm } from '@/components/product-idea-form';
 
 export default function Home() {
   const projects = [
@@ -91,13 +91,10 @@ export default function Home() {
           <p className="max-w-2xl mx-auto mt-6 text-lg text-muted-foreground">
             I specialize in turning complex problems into simple, beautiful, and user-centric designs. Explore my work to see how I approach design challenges.
           </p>
-          <div className="flex justify-center gap-4 mt-8">
-            <Button size="lg" asChild>
-              <a href="mailto:hello@janedoe.com">
-                Let's create a product
-                <ArrowRight className="ml-2" />
-              </a>
-            </Button>
+          <div className="flex justify-center mt-8">
+            <div className="w-full max-w-2xl">
+                <ProductIdeaForm />
+            </div>
           </div>
         </section>
 

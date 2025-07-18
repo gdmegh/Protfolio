@@ -4,6 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
+import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import React from 'react';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -14,10 +18,11 @@ const navItems = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
   
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+      <div className="container flex items-center justify-between h-16 max-w-screen-2xl">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="https://placehold.co/40x40.png"
@@ -27,9 +32,8 @@ export function SiteHeader() {
             className="rounded-full"
             data-ai-hint="person avatar"
           />
-          <span className="hidden font-bold sm:inline-block font-headline">Aminul Islam</span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium">
+        <nav className="items-center hidden gap-6 text-sm font-medium md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -43,6 +47,32 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <div className="md:hidden">
+            <Sheet open={open} onOpenChange={setOpen}>
+                <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                        <Menu className="w-4 h-4" />
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <nav className="flex flex-col gap-4 mt-8">
+                        {navItems.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                                "text-lg transition-colors hover:text-primary",
+                                pathname === item.href ? "text-primary" : "text-muted-foreground"
+                            )}
+                        >
+                            {item.label}
+                        </Link>
+                        ))}
+                    </nav>
+                </SheetContent>
+            </Sheet>
+        </div>
       </div>
     </header>
   );
