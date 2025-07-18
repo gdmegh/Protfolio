@@ -1,5 +1,6 @@
 
-import { ProductIdeaForm } from './product-idea-form';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 export function SiteFooter() {
   return (
@@ -10,9 +11,9 @@ export function SiteFooter() {
           Have a project in mind or just want to say hello? I'd love to hear from you.
         </p>
         <div className="mt-8">
-            <div className="w-full max-w-2xl mx-auto">
-                <ProductIdeaForm />
-            </div>
+            <Button asChild size="lg">
+              <Link href="/submit-idea">Let's create a product</Link>
+            </Button>
         </div>
         <div className="mt-12 text-sm text-muted-foreground">
           © {new Date().getFullYear()} Aminul Islam. All rights reserved.

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { MouseFollower } from '@/components/mouse-follower';
-import { ProductIdeaForm } from '@/components/product-idea-form';
+import Link from 'next/link';
 
 export default function Home() {
   const projects = [
@@ -92,9 +92,9 @@ export default function Home() {
             I specialize in turning complex problems into simple, beautiful, and user-centric designs. Explore my work to see how I approach design challenges.
           </p>
           <div className="flex justify-center mt-8">
-            <div className="w-full max-w-2xl">
-                <ProductIdeaForm />
-            </div>
+            <Button asChild size="lg">
+              <Link href="/submit-idea">Let's create a product</Link>
+            </Button>
           </div>
         </section>
 
