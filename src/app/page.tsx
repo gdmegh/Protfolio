@@ -1,9 +1,12 @@
+
+'use client';
 import { ArrowRight, Mail } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Logo } from '@/components/icons';
+import { MouseFollower } from '@/components/mouse-follower';
 
 export default function Home() {
   const projects = [
@@ -35,66 +38,76 @@ export default function Home() {
       tags: ['Prototyping', 'UI Design', 'Social Media'],
       hint: 'mobile ui'
     },
+    {
+      title: 'Project Epsilon',
+      description: 'Designing a gamified learning platform for a non-profit organization, increasing user engagement by 50%.',
+      image: 'https://placehold.co/600x400.png',
+      tags: ['Gamification', 'UI Design', 'Non-profit'],
+      hint: 'gamification ui'
+    },
+    {
+      title: 'Project Zeta',
+      description: 'A data visualization dashboard for a fintech startup, simplifying complex financial data for investors.',
+      image: 'https://placehold.co/600x400.png',
+      tags: ['Data Viz', 'Fintech', 'Dashboard'],
+      hint: 'financial dashboard'
+    }
+  ];
+
+  const blogs = [
+    {
+      title: 'The Art of User-Centric Design',
+      description: 'Exploring the principles of putting users at the heart of the design process for better products.',
+      image: 'https://placehold.co/600x400.png',
+      tags: ['Design Theory', 'UX'],
+      hint: 'design book'
+    },
+    {
+      title: 'Why Your Next Project Needs a Design System',
+      description: 'A deep dive into how design systems create consistency and efficiency in product development.',
+      image: 'https://placehold.co/600x400.png',
+      tags: ['Design System', 'Workflow'],
+      hint: 'abstract pattern'
+    },
+    {
+      title: 'From Wireframe to High-Fidelity',
+      description: 'A step-by-step guide on how to effectively move from low-fidelity sketches to polished prototypes.',
+      image: 'https://placehold.co/600x400.png',
+      tags: ['Prototyping', 'UI Design'],
+      hint: 'wireframe sketch'
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-body">
-      <header className="sticky top-0 z-10 flex items-center justify-between h-16 px-4 border-b bg-background/80 backdrop-blur-sm sm:px-6 md:px-8">
-        <div className="flex items-center gap-2">
-          <Logo className="w-8 h-8 text-primary" />
-          <h1 className="text-xl font-bold font-headline">Jane Doe</h1>
-        </div>
-        <nav className="items-center hidden gap-6 text-sm font-medium md:flex">
-          <a href="#work" className="hover:text-primary">Work</a>
-          <a href="#about" className="hover:text-primary">About</a>
-          <a href="#contact" className="hover:text-primary">Contact</a>
-        </nav>
-        <Button asChild className="hidden md:flex">
-          <a href="mailto:hello@janedoe.com">
-            Get in Touch
-            <Mail className="ml-2" />
-          </a>
-        </Button>
-      </header>
-
-      <main className="container px-4 py-16 mx-auto md:px-8">
+    <div className="relative min-h-screen bg-background text-foreground font-body">
+      <MouseFollower />
+      <main className="container px-4 py-16 mx-auto md:px-8 z-10 relative">
         {/* Hero Section */}
         <section className="text-center py-20">
-          <Image
-            src="https://placehold.co/128x128.png"
-            alt="Jane Doe"
-            width={128}
-            height={128}
-            className="mx-auto rounded-full mb-6"
-            data-ai-hint="person avatar"
-          />
           <h1 className="text-4xl font-bold tracking-tight md:text-6xl font-headline">
-            Product Designer Crafting <br />
-            <span className="text-primary">Intuitive</span> Digital Experiences
+            Crafting Digital Product <br />
+            with <span className="text-primary">Aminul Islam</span>
           </h1>
           <p className="max-w-2xl mx-auto mt-6 text-lg text-muted-foreground">
             I specialize in turning complex problems into simple, beautiful, and user-centric designs. Explore my work to see how I approach design challenges.
           </p>
           <div className="flex justify-center gap-4 mt-8">
             <Button size="lg" asChild>
-              <a href="#work">
-                View My Work
+              <a href="mailto:hello@janedoe.com">
+                Let's create a product
                 <ArrowRight className="ml-2" />
               </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="#contact">Contact Me</a>
             </Button>
           </div>
         </section>
 
         {/* Selected Work Section */}
         <section id="work" className="py-20">
-          <h2 className="mb-2 text-sm font-semibold tracking-widest text-center uppercase text-muted-foreground">Selected Work</h2>
-          <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Case Studies</h3>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
+          <h2 className="mb-2 text-sm font-semibold tracking-widest text-center uppercase text-muted-foreground">Portfolio</h2>
+          <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Selected Work</h3>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1">
+              <Card key={index} className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -118,56 +131,36 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="py-20">
-           <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
-            <div>
-              <h2 className="mb-2 text-sm font-semibold tracking-widest uppercase text-muted-foreground">About Me</h2>
-              <h3 className="mb-6 text-3xl font-bold md:text-4xl font-headline">A Passion for Problem-Solving</h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  Hello! I'm Jane, a product designer with a knack for understanding user needs and translating them into functional and delightful digital products. My journey into design began with a fascination for how technology can improve people's lives, and that curiosity continues to drive my work today.
-                </p>
-                <p>
-                  I thrive in collaborative environments, working alongside engineers, product managers, and stakeholders to ship high-quality products. My process is rooted in research, iteration, and a deep sense of empathy for the end-user.
-                </p>
-                <p>When I'm not designing, you can find me exploring new hiking trails, trying out new recipes, or getting lost in a good book.</p>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <Image
-                src="https://placehold.co/400x500.png"
-                alt="Jane Doe working"
-                width={400}
-                height={500}
-                className="rounded-lg shadow-lg"
-                data-ai-hint="person working"
-              />
-            </div>
+        {/* Latest Blogs Section */}
+        <section id="blogs" className="py-20">
+          <h2 className="mb-2 text-sm font-semibold tracking-widest text-center uppercase text-muted-foreground">Insights</h2>
+          <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Latest Blogs</h3>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+            {blogs.map((blog, index) => (
+              <Card key={index} className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1">
+                <Image
+                  src={blog.image}
+                  alt={blog.title}
+                  width={600}
+                  height={400}
+                  className="object-cover w-full"
+                  data-ai-hint={blog.hint}
+                />
+                <CardContent className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {blog.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                  </div>
+                  <h4 className="text-2xl font-bold font-headline">{blog.title}</h4>
+                  <p className="mt-2 text-muted-foreground">{blog.description}</p>
+                  <Button variant="link" className="px-0 mt-4">
+                    Read More <ArrowRight className="ml-2" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
       </main>
-      
-      {/* Footer / Contact Section */}
-      <footer id="contact" className="py-12 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold font-headline">Let's build something great together.</h2>
-          <p className="max-w-xl mx-auto mt-4 text-lg text-muted-foreground">
-            Have a project in mind or just want to say hello? I'd love to hear from you.
-          </p>
-          <div className="mt-8">
-            <Button size="lg" asChild>
-              <a href="mailto:hello@janedoe.com">
-                <Mail className="mr-2" />
-                hello@janedoe.com
-              </a>
-            </Button>
-          </div>
-          <div className="mt-12 text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Jane Doe. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
