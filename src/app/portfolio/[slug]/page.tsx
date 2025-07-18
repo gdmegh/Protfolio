@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Users, Zap } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Link from 'next/link';
+import Autoplay from "embla-carousel-autoplay";
+import React from 'react';
 
 const allProjects = [
     {
@@ -32,7 +34,7 @@ const allProjects = [
     {
       title: 'Project Beta',
       slug: 'project-beta',
-      description: 'A complete redesign of a SaaS platform\'s user onboarding flow, resulting in a 35% increase in user retention.',
+      description: 'A complete redesign of a SaaS platform\\'s user onboarding flow, resulting in a 35% increase in user retention.',
       longDescription: "<p>The primary challenge for Project Beta was high user drop-off during the initial onboarding phase. The existing flow was confusing and overwhelming for new users.</p><p>We took a data-driven approach, analyzing user behavior funnels and heatmaps to pinpoint exact drop-off points. Our redesign focused on a guided, step-by-step tour, interactive tutorials, and personalized setup checklists. By breaking down the process into manageable chunks and providing immediate value, we successfully increased user retention by 35% within the first month post-launch.</p>",
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Research', 'Web App', 'SaaS'],
@@ -134,6 +136,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   }
 
   const relatedProjects = allProjects.filter((p) => p.slug !== params.slug).slice(0, 4);
+  const plugin = React.useRef(
+    Autoplay({ delay: 10000, stopOnInteraction: true })
+  )
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
@@ -148,7 +153,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </header>
 
           <div className="mb-12">
-            <Carousel className="w-full max-w-4xl mx-auto">
+            <Carousel 
+                plugins={[plugin.current]}
+                className="w-full max-w-4xl mx-auto"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+            >
                 <CarouselContent>
                     {project.mockupImages.map((image, index) => (
                     <CarouselItem key={index}>
