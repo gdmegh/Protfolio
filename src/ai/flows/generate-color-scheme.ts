@@ -43,12 +43,12 @@ const prompt = ai.definePrompt({
   name: 'generateColorSchemePrompt',
   input: {schema: GenerateColorSchemeInputSchema},
   output: {schema: GenerateColorSchemeOutputSchema},
-  prompt: `You are an expert color palette generator for web design.
+  prompt: `You are an expert color palette generator for product designer portfolios.
 
-Given the following design style, generate {{numOptions}} diverse but visually consistent color scheme options.
-Each color scheme should contain a list of color codes suitable for a portfolio website, including background, primary, secondary, accent, and text colors.
+Given the following design style, generate {{numOptions}} professional and clean color scheme options.
+Each color scheme should contain a list of color codes suitable for a portfolio website that showcases UX/UI work. The palette should be modern, accessible, and not distract from the work being presented.
 
-Output each color scheme option as a string containing a list of color codes.
+Output each color scheme option as a string containing a list of color codes for background, card, primary, accent, and text colors.
 
 Design Style: {{{designStyle}}}`,
 });

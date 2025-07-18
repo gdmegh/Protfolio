@@ -43,17 +43,17 @@ const analyzePortfolioDesignPrompt = ai.definePrompt({
   name: 'analyzePortfolioDesignPrompt',
   input: {schema: AnalyzePortfolioDesignInputSchema},
   output: {schema: AnalyzePortfolioDesignOutputSchema},
-  prompt: `You are an expert web design analyst. Analyze the design of the portfolio website provided in the URL, and provide a summary of its key design characteristics.
+  prompt: `You are an expert product design analyst. Analyze the design of the portfolio website provided in the URL, focusing on how it presents the work of a product designer.
 
 URL: {{{portfolioUrl}}}
 
 Focus on the following aspects:
-- Layout: Describe the overall layout of the website (e.g., grid-based, asymmetrical, minimalist).
-- Color Scheme: Identify the dominant colors and describe the overall color palette (e.g., monochromatic, complementary, vibrant).
-- Typography: Analyze the fonts used for headings and body text, and describe their style (e.g., serif, sans-serif, modern, classic).
-- Imagery: Analyze the use of images.
+- Case Study Presentation: How are case studies structured? Is there a clear narrative (problem, process, solution, impact)?
+- UI/UX Showcase: How are UI elements, wireframes, and prototypes displayed?
+- Layout & Navigation: Describe the overall layout and site navigation. Is it clean, intuitive, and user-friendly?
+- Visual Design: Analyze the color scheme, typography, and use of imagery. Does it create a professional and trustworthy feel?
 
-Provide a concise summary of these design elements.`,
+Provide a concise summary of these elements, tailored to what makes an effective product design portfolio.`,
 });
 
 const analyzePortfolioDesignFlow = ai.defineFlow(

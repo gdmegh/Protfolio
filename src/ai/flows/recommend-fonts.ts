@@ -35,12 +35,12 @@ const prompt = ai.definePrompt({
   name: 'recommendFontsPrompt',
   input: {schema: RecommendFontsInputSchema},
   output: {schema: RecommendFontsOutputSchema},
-  prompt: `You are a font expert who recommends font pairings (headline and body) based on a reference website's design style.
+  prompt: `You are a typography expert specializing in fonts for digital product design. Your goal is to recommend a font pairing (headline and body) that is clean, highly readable on screens, and professional.
 
-  Analyze the reference website description and suggest suitable font pairings for readability and visual appeal.
+Analyze the reference website description and suggest a font pairing suitable for a product designer's portfolio. The body font must be excellent for reading long case studies.
 
-  Reference Website Description: {{{referenceSiteDescription}}}
-  `,
+Reference Website Description: {{{referenceSiteDescription}}}
+`,
 });
 
 const recommendFontsFlow = ai.defineFlow(

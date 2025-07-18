@@ -1,4 +1,3 @@
-// src/ai/flows/suggest-layout-from-example.ts
 'use server';
 /**
  * @fileOverview This file defines a Genkit flow for suggesting page layouts based on a design example.
@@ -39,9 +38,11 @@ const prompt = ai.definePrompt({
   name: 'suggestLayoutFromExamplePrompt',
   input: {schema: SuggestLayoutFromExampleInputSchema},
   output: {schema: SuggestLayoutFromExampleOutputSchema},
-  prompt: `You are an expert web designer. Given the following design example, suggest several different page layouts that would be appropriate. Return them as an array of strings.
+  prompt: `You are an expert product designer specializing in portfolio layouts. Given the following design analysis, suggest several page layouts that are effective for showcasing product design case studies. Focus on clean, grid-based layouts that prioritize readability and clear visual hierarchy.
 
-Design Example: {{{designExample}}}`,
+Design Example: {{{designExample}}}
+
+Return the suggestions as an array of strings. For example: "A clean, two-column grid for case study summaries on the homepage."`,
 });
 
 const suggestLayoutFromExampleFlow = ai.defineFlow(
@@ -51,7 +52,7 @@ const suggestLayoutFromExampleFlow = ai.defineFlow(
     outputSchema: SuggestLayoutFromExampleOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const {output} = await suggestLayoutFromExample(input);
     return output!;
   }
 );
