@@ -12,6 +12,7 @@ export default function Home() {
   const projects = [
     {
       title: 'Project Alpha',
+      slug: 'project-alpha',
       description: 'A mobile app designed to streamline team collaboration and project management, boosting productivity by 20%.',
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Design', 'Mobile App', 'Case Study'],
@@ -19,6 +20,7 @@ export default function Home() {
     },
     {
       title: 'Project Beta',
+      slug: 'project-beta',
       description: 'A complete redesign of a SaaS platform\'s user onboarding flow, resulting in a 35% increase in user retention.',
       image: 'https://placehold.co/600x400.png',
       tags: ['UX Research', 'Web App', 'SaaS'],
@@ -26,6 +28,7 @@ export default function Home() {
     },
     {
       title: 'Project Gamma',
+      slug: 'project-gamma',
       description: 'Creating an accessible design system for a large-scale e-commerce website to ensure inclusivity for all users.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Design System', 'Accessibility', 'E-commerce'],
@@ -33,6 +36,7 @@ export default function Home() {
     },
     {
       title: 'Project Delta',
+      slug: 'project-delta',
       description: 'Conceptualizing and prototyping a new feature for a social media app to enhance user engagement.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Prototyping', 'UI Design', 'Social Media'],
@@ -40,6 +44,7 @@ export default function Home() {
     },
     {
       title: 'Project Epsilon',
+      slug: 'project-epsilon',
       description: 'Designing a gamified learning platform for a non-profit organization, increasing user engagement by 50%.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Gamification', 'UI Design', 'Non-profit'],
@@ -47,6 +52,7 @@ export default function Home() {
     },
     {
       title: 'Project Zeta',
+      slug: 'project-zeta',
       description: 'A data visualization dashboard for a fintech startup, simplifying complex financial data for investors.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Data Viz', 'Fintech', 'Dashboard'],
@@ -57,6 +63,7 @@ export default function Home() {
   const blogs = [
     {
       title: 'The Art of User-Centric Design',
+      slug: 'the-art-of-user-centric-design',
       description: 'Exploring the principles of putting users at the heart of the design process for better products.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Design Theory', 'UX'],
@@ -64,6 +71,7 @@ export default function Home() {
     },
     {
       title: 'Why Your Next Project Needs a Design System',
+      slug: 'why-your-next-project-needs-a-design-system',
       description: 'A deep dive into how design systems create consistency and efficiency in product development.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Design System', 'Workflow'],
@@ -71,6 +79,7 @@ export default function Home() {
     },
     {
       title: 'From Wireframe to High-Fidelity',
+      slug: 'from-wireframe-to-high-fidelity',
       description: 'A step-by-step guide on how to effectively move from low-fidelity sketches to polished prototypes.',
       image: 'https://placehold.co/600x400.png',
       tags: ['Prototyping', 'UI Design'],
@@ -104,26 +113,25 @@ export default function Home() {
           <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Selected Work</h3>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {projects.map((project, index) => (
-              <Card key={index} className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full"
-                  data-ai-hint={project.hint}
-                />
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                  </div>
-                  <h4 className="text-2xl font-bold font-headline">{project.title}</h4>
-                  <p className="mt-2 text-muted-foreground">{project.description}</p>
-                  <Button variant="link" className="px-0 mt-4">
-                    View Case Study <ArrowRight className="ml-2" />
-                  </Button>
-                </CardContent>
-              </Card>
+              <Link href={`/portfolio/${project.slug}`} key={index}>
+                <Card className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full"
+                    data-ai-hint={project.hint}
+                  />
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                    </div>
+                    <h4 className="text-2xl font-bold font-headline">{project.title}</h4>
+                    <p className="mt-2 text-muted-foreground flex-grow">{project.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </section>
@@ -134,26 +142,25 @@ export default function Home() {
           <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Latest Blogs</h3>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
             {blogs.map((blog, index) => (
-              <Card key={index} className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1">
-                <Image
-                  src={blog.image}
-                  alt={blog.title}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full"
-                  data-ai-hint={blog.hint}
-                />
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                  </div>
-                  <h4 className="text-2xl font-bold font-headline">{blog.title}</h4>
-                  <p className="mt-2 text-muted-foreground">{blog.description}</p>
-                  <Button variant="link" className="px-0 mt-4">
-                    Read More <ArrowRight className="ml-2" />
-                  </Button>
-                </CardContent>
-              </Card>
+              <Link href={`/blogs/${blog.slug}`} key={index}>
+                <Card className="overflow-hidden transition-all duration-300 shadow-md bg-card/50 backdrop-blur-sm hover:shadow-xl hover:-translate-y-1 h-full flex flex-col">
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full"
+                    data-ai-hint={blog.hint}
+                  />
+                  <CardContent className="p-6 flex flex-col flex-grow">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {blog.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                    </div>
+                    <h4 className="text-2xl font-bold font-headline">{blog.title}</h4>
+                    <p className="mt-2 text-muted-foreground flex-grow">{blog.description}</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </section>
