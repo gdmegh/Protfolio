@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { MouseFollower } from '@/components/mouse-follower';
 import Link from 'next/link';
 
 export default function Home() {
@@ -88,11 +87,10 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground font-body">
-      <MouseFollower />
-      <main className="container px-4 py-16 mx-auto md:px-8 z-10 relative">
+    <div className="min-h-screen bg-background text-foreground font-body">
+      <main className="container px-4 py-16 mx-auto md:px-8">
         {/* Hero Section */}
-        <section className="text-center py-20 pb-8">
+        <section className="py-20 text-center pb-8">
           <h1 className="text-5xl font-bold tracking-tight md:text-7xl font-headline">
             Crafting Digital <span className="text-primary">Product</span>
           </h1>
