@@ -22,7 +22,7 @@ export function MouseFollower() {
     <div
       className="pointer-events-none fixed inset-0 z-0 transition-all duration-300"
       style={{
-        background: `radial-gradient(circle at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.2) 0%, transparent 30%)`,
+        background: `radial-gradient(circle at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.15) 0%, transparent 25%)`,
       }}
     />
   );
