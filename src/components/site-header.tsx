@@ -25,7 +25,7 @@ export function SiteHeader() {
       <div className="container flex items-center justify-between h-16 max-w-screen-2xl">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="https://placehold.co/40x40.png"
+            src="/images/avatar.png"
             alt="Aminul Islam"
             width={40}
             height={40}

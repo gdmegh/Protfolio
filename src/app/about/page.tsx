@@ -9,7 +9,7 @@ export default function AboutPage() {
           <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
             <div className="flex justify-center">
               <Image
-                src="https://placehold.co/400x500.png"
+                src="/images/about-aminul.png"
                 alt="Aminul Islam working"
                 width={400}
                 height={500}
