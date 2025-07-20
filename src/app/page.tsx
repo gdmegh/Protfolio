@@ -92,7 +92,7 @@ export default function Home() {
       <MouseFollower />
       <main className="container px-4 py-16 mx-auto md:px-8 z-10 relative">
         {/* Hero Section */}
-        <section className="text-center py-20">
+        <section className="text-center py-20 pb-8">
           <h1 className="text-4xl font-bold tracking-tight md:text-6xl font-headline">
             Crafting Digital Product
           </h1>
@@ -107,7 +107,7 @@ export default function Home() {
         </section>
 
         {/* Selected Work Section */}
-        <section id="work" className="py-20">
+        <section id="work" className="py-20 pt-8">
           <h2 className="mb-2 text-sm font-semibold tracking-widest text-center uppercase text-muted-foreground">Portfolio</h2>
           <h3 className="mb-12 text-3xl font-bold text-center md:text-4xl font-headline">Selected Work</h3>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
