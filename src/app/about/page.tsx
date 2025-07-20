@@ -17,7 +17,7 @@ export default function AboutPage() {
           <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
             <div className="flex justify-center">
               <Image
-                src="/images/aminul-islam.png"
+                src="/assets/images/aminul-islam.png"
                 alt="Aminul Islam"
                 width={400}
                 height={500}
@@ -26,16 +26,17 @@ export default function AboutPage() {
               />
             </div>
             <div>
-              <h2 className="mb-2 text-sm font-semibold tracking-widest uppercase text-muted-foreground">About Me</h2>
-              <h3 className="mb-6 text-3xl font-bold md:text-4xl font-headline">A Passion for Problem-Solving</h3>
+              
+              <h3 className="mb-2 text-4xl font-bold font-headline">I'm<span style={{ color: 'goldenrod' }}> Aminul Islam</span></h3>
+              <p className="mb-6 text-xl font-medium text-muted-foreground">Creative Product Designer</p>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Hello! I&apos;m <strong className="font-bold text-primary">Aminul</strong>, a product designer with a knack for understanding user needs and translating them into functional and delightful digital products. My journey into design began with a fascination for how technology can improve people&apos;s lives, and that curiosity continues to drive my work today.
+                  Expertise in creating intuitive and engaging digital experiences. With a focus on user-centered design, I strive to bridge the gap between complex problems and elegant solutions. My approach involves thorough research, iterative prototyping, and close collaboration with development teams to bring ideas to life.
                 </p>
                 <p>
-                  I thrive in collaborative environments, working alongside engineers, product managers, and stakeholders to ship high-quality products. My process is rooted in research, iteration, and a deep sense of empathy for the end-user.
+                  My passion lies in crafting products that not only meet user needs but also exceed expectations. I believe in the power of design to make technology more accessible and enjoyable for everyone.
                 </p>
-                <p>When I&apos;m not designing, you can find me exploring new hiking trails, trying out new recipes, or getting lost in a good book.</p>
+                <p>Outside of design, I enjoy exploring the outdoors, experimenting in the kitchen, and getting lost in the pages of a good book.</p>
               </div>
               <div className="mt-8">
                 <Button variant="outline" asChild>
