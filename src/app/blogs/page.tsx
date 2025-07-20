@@ -4,50 +4,10 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { allBlogs } from '@/lib/data/blogs';
 
 export default function BlogsPage() {
-  const blogs = [
-    {
-      title: 'The Art of User-Centric Design',
-      slug: 'the-art-of-user-centric-design',
-      description: 'Exploring the principles of putting users at the heart of the design process for better products.',
-      image: 'https://placehold.co/600x400.png',
-      tags: ['Design Theory', 'UX'],
-      hint: 'design book'
-    },
-    {
-      title: 'Why Your Next Project Needs a Design System',
-      slug: 'why-your-next-project-needs-a-design-system',
-      description: 'A deep dive into how design systems create consistency and efficiency in product development.',
-      image: 'https://placehold.co/600x400.png',
-      tags: ['Design System', 'Workflow'],
-      hint: 'abstract pattern'
-    },
-    {
-      title: 'From Wireframe to High-Fidelity',
-      slug: 'from-wireframe-to-high-fidelity',
-      description: 'A step-by-step guide on how to effectively move from low-fidelity sketches to polished prototypes.',
-      image: 'https://placehold.co/600x400.png',
-      tags: ['Prototyping', 'UI Design'],
-      hint: 'wireframe sketch'
-    },
-    {
-      title: 'Accessibility in Design: More Than a Checklist',
-      slug: 'accessibility-in-design-more-than-a-checklist',
-      description: 'Understanding the importance of inclusive design and how to implement it in your work.',
-      image: 'https://placehold.co/600x400.png',
-      tags: ['Accessibility', 'Inclusion'],
-      hint: 'inclusive design'
-    },
-    {
-      title: 'The Psychology of Color in UI',
-      slug: 'the-psychology-of-color-in-ui',
-      description: 'How color choices can influence user perception and behavior in digital interfaces.',
-      image: 'https://placehold.co/600x400.png',
-      tags: ['UI Design', 'Psychology'],
-      hint: 'color palette'
-    },
-  ];
+  const blogs = allBlogs;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
