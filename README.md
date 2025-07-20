@@ -59,3 +59,4 @@ In the project directory, you can run:
 -   `npm run start`: Starts a production server.
 -   `npm run lint`: Runs the linter to check for code quality issues.
 -   `npm run genkit:dev`: Starts the Genkit development server.
+# Protfolio
