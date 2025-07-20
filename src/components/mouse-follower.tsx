@@ -20,9 +20,9 @@ export function MouseFollower() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-30 transition-all duration-300"
+      className="pointer-events-none fixed inset-0 z-0 transition-all duration-300"
       style={{
-        background: `radial-gradient(350px at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.25), transparent 80%)`,
+        background: `radial-gradient(circle at ${position.x}px ${position.y}px, hsla(var(--primary) / 0.2) 0%, transparent 30%)`,
       }}
     />
   );
