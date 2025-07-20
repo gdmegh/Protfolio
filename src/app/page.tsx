@@ -93,7 +93,7 @@ export default function Home() {
       <main className="container px-4 py-16 mx-auto md:px-8 z-10 relative">
         {/* Hero Section */}
         <section className="text-center py-20 pb-8">
-          <h1 className="text-4xl font-bold tracking-tight md:text-6xl font-headline">
+          <h1 className="text-5xl font-bold tracking-tight md:text-7xl font-headline">
             Crafting Digital <span className="text-primary">Product</span>
           </h1>
           <p className="max-w-2xl mx-auto mt-6 text-lg text-muted-foreground">
