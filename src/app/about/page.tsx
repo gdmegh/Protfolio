@@ -17,7 +17,7 @@ export default function AboutPage() {
           <div className="grid items-center grid-cols-1 gap-12 md:grid-cols-2">
             <div className="flex justify-center">
               <Image
-                src="/images/avatar.png"
+                src="/images/aminul-islam.png"
                 alt="Aminul Islam"
                 width={400}
                 height={500}
