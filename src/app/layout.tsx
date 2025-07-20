@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased")}>
         <MouseFollower />
-        <div className="relative flex min-h-dvh flex-col bg-background">
+        <div className="relative flex min-h-dvh flex-col bg-transparent">
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
